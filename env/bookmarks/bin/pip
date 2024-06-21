@@ -1,4 +1,4 @@
-#!/home/mehdi/Desktop/project_2/env/bookmarks/bin/python3
+#!/home/mehdi/Desktop/project_2/env/bookmarks/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

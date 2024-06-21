@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ffs82$hs8v_!dk!szq+_y-82%pxtiwn+1+2^&a0@k)9_ys$#*4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social_django',
+    'django_extensions',
+    'images.apps.ImageConfig',
 ]
 
 MIDDLEWARE = [
@@ -133,7 +136,25 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+SOCIAL_AUTH_PIPELINE = [
+    'social_core.pipline.social_auth.social_details',
+    'social_core.pipeline.social_auth.social_uid',
+    'social_core.pipeline.social_auth.auth_allowed',
+    'social_core.pipeline.social_auth.social_user',
+    'social_core.pipeline.user.get_username',
+    'social_core.pipeline.user.create_user',
+    'account.authentication.create_profile',
+    'social_core.pipeline.social_auth.associate_user',
+    'social_core.pipeline.social_auth.load_extra_data',
+    'social_core.pipeline.user.user_details',
+]
+
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'account.authentication.EmailAuthBackend',
+    'social_core.backends.google.GoogleOAuth2',
 ]
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '24158408435-5h5sf9t0ghjgd6c6g3sssj8ehs1pjmkq.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
+
