@@ -1,5 +1,5 @@
-# Social app project
+# This is Social app Project
 
-**This is a web application for posting photos from other websites**
+**This project post photos from another websites**
 
-
+for run this project enter this command: `pip install social app`
